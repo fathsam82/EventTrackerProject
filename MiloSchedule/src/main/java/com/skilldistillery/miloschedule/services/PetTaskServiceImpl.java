@@ -1,6 +1,7 @@
 package com.skilldistillery.miloschedule.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,14 +37,28 @@ public class PetTaskServiceImpl implements PetTaskService {
 
 	@Override
 	public PetTask update(int scheduleId, PetTask newSchedule) {
-		// TODO Auto-generated method stub
+		PetTask existingPetTask = null;
+		PetTask existingOpt = scheduleRepo.findById(scheduleId);
+		if(!(existingOpt == null)) {
+			existingPetTask.setDescription(newSchedule.getDescription());
+			existingPetTask.setFrequency(newSchedule.getFrequency());
+			existingPetTask.setName(newSchedule.getName());
+			scheduleRepo.saveAndFlush(existingPetTask);
+			
+			return existingPetTask;
+		}
 		return null;
+		
+		
 	}
 
 	@Override
 	public boolean delete(int scheduleId) {
-		// TODO Auto-generated method stub
-		return false;
+	    if (scheduleRepo.existsById(scheduleId)) {
+	        scheduleRepo.deleteById(scheduleId);
+	        return true;
+	    }
+	    return false; 
 	}
 
 }
