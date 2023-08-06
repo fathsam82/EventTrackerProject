@@ -30,8 +30,8 @@ public class PetTaskServiceImpl implements PetTaskService {
 
 	@Override
 	public PetTask create(PetTask petTask) {
-		// TODO Auto-generated method stub
-		return null;
+		petTask.setTaskType(petTask.getTaskType());
+		return scheduleRepo.saveAndFlush(petTask);
 	}
 
 	@Override
