@@ -5,7 +5,7 @@
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
 		
-		<class>com.skilldistillery.miloschedule.entities.Schedule</class>
+		<class>com.skilldistillery.miloschedule.entities.PetTask</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/miloscheduledb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />

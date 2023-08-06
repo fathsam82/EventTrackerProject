@@ -7,18 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 @Entity
-@Table(name = "milo_schedule")
-public class Schedule {
-	
+@Table(name = "task_type")
+public class TaskType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String needs;
+	private String name;
 
-	public Schedule() {
+	public TaskType() {
 		
 	}
 
@@ -30,17 +28,17 @@ public class Schedule {
 		this.id = id;
 	}
 
-	public String getNeeds() {
-		return needs;
+	public String getName() {
+		return name;
 	}
 
-	public void setNeeds(String needs) {
-		this.needs = needs;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "Schedule [id=" + id + ", needs=" + needs + "]";
+		return "TaskType [id=" + id + ", name=" + name + "]";
 	}
 
 	@Override
@@ -56,10 +54,9 @@ public class Schedule {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Schedule other = (Schedule) obj;
+		TaskType other = (TaskType) obj;
 		return id == other.id;
 	}
-	
 	
 	
 

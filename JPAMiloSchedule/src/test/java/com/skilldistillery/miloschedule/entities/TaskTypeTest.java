@@ -13,10 +13,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class MiloScheduleTest {
+class TaskTypeTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private PetTask petTask;
+	private TaskType type;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,19 +31,19 @@ class MiloScheduleTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		petTask = em.find(PetTask.class, 1);
+		type = em.find(TaskType.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		petTask = null;
+		type = null;
 	}
 
 	@Test
 	void test() {
-		assertNotNull(petTask);
-		assertEquals("Breakfast", petTask.getName());
+		assertNotNull(type);
+		assertEquals("Meal", type.getName());
 	}
-	
+
 }
