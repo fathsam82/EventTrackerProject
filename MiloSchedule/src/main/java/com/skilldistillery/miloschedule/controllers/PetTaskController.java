@@ -23,40 +23,41 @@ import com.skilldistillery.miloschedule.services.PetTaskService;
 public class PetTaskController {
 	@Autowired
 	private PetTaskService scheduleService;
-	
-	
+
 	@GetMapping("pettasks")
 	List<PetTask> listOfSchedules() {
 		return scheduleService.listAllSchedules();
-		
+
 	}
+
 	@GetMapping("pettasks/{scheduleId}")
 	public PetTask getSchedule(@PathVariable int scheduleId, HttpServletResponse res) {
 		PetTask petTask = scheduleService.getSchedule(scheduleId);
-		if(petTask == null) {
+		if (petTask == null) {
 			res.setStatus(404);
 		}
 		return petTask;
-		
+
 	}
+
 	@PostMapping("pettasks")
 	public PetTask createTask(@RequestBody PetTask petTask, HttpServletResponse res, HttpServletRequest req) {
 		petTask = scheduleService.create(petTask);
-		if(petTask == null) {
+		if (petTask == null) {
 			res.setStatus(404);
-		}
-		else {
+		} else {
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			res.setHeader("Location", url.append("/").append(petTask.getId()).toString());
 		}
-	
-	return petTask;
+
+		return petTask;
 	}
-	@PutMapping("pettasks/{taskId}")
-	public PetTask updateTask(@PathVariable Integer taskId, @RequestBody PetTask petTask, HttpServletResponse res) {
+
+	@PutMapping("pettasks/{scheduleId}")
+	public PetTask updatePost(@PathVariable Integer scheduleId, @RequestBody PetTask petTask, HttpServletResponse res) {
 		try {
-			petTask = scheduleService.create(petTask);
+			petTask = scheduleService.update(scheduleId, petTask);
 			if (petTask == null) {
 				res.setStatus(404);
 			}
@@ -66,14 +67,14 @@ public class PetTaskController {
 		}
 		return petTask;
 	}
+
 	@DeleteMapping("pettasks/{taskId}")
 	public void deletePost(@PathVariable Integer taskId, HttpServletResponse res) {
 		if (scheduleService.delete(taskId)) {
-			
+
 			res.setStatus(204);
-		}
-		else {
-			
+		} else {
+
 			res.setStatus(404);
 		}
 	}

@@ -16,15 +16,15 @@ public class PetTaskServiceImpl implements PetTaskService {
 
 	@Override
 	public List<PetTask> listAllSchedules() {
-		
+
 		return scheduleRepo.findAll();
 	}
 
 	@Override
 	public PetTask getSchedule(int scheduleId) {
-		if(! scheduleRepo.existsById(scheduleId)) {
+		if (!scheduleRepo.existsById(scheduleId)) {
 			return null;
-			
+
 		}
 		return scheduleRepo.findById(scheduleId);
 	}
@@ -37,28 +37,28 @@ public class PetTaskServiceImpl implements PetTaskService {
 
 	@Override
 	public PetTask update(int scheduleId, PetTask newSchedule) {
-		PetTask existingPetTask = null;
-		PetTask existingOpt = scheduleRepo.findById(scheduleId);
-		if(!(existingOpt == null)) {
-			existingPetTask.setDescription(newSchedule.getDescription());
-			existingPetTask.setFrequency(newSchedule.getFrequency());
-			existingPetTask.setName(newSchedule.getName());
-			scheduleRepo.saveAndFlush(existingPetTask);
-			
-			return existingPetTask;
+		PetTask updatedPetTask = null;
+		PetTask existingTask = scheduleRepo.findById(scheduleId);
+		if (!(existingTask == null)) {
+			updatedPetTask = existingTask;
+			updatedPetTask.setName(newSchedule.getName());
+			updatedPetTask.setDescription(newSchedule.getDescription());
+			updatedPetTask.setFrequency(newSchedule.getFrequency());
+			scheduleRepo.saveAndFlush(updatedPetTask);
+
+			return updatedPetTask;
 		}
 		return null;
-		
-		
+
 	}
 
 	@Override
 	public boolean delete(int scheduleId) {
-	    if (scheduleRepo.existsById(scheduleId)) {
-	        scheduleRepo.deleteById(scheduleId);
-	        return true;
-	    }
-	    return false; 
+		if (scheduleRepo.existsById(scheduleId)) {
+			scheduleRepo.deleteById(scheduleId);
+			return true;
+		}
+		return false;
 	}
 
 }
