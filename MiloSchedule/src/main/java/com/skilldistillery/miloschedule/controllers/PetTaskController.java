@@ -1,6 +1,7 @@
 package com.skilldistillery.miloschedule.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,11 +33,11 @@ public class PetTaskController {
 
 	@GetMapping("pettasks/{scheduleId}")
 	public PetTask getSchedule(@PathVariable int scheduleId, HttpServletResponse res) {
-		PetTask petTask = scheduleService.getSchedule(scheduleId);
+		Optional<PetTask> petTask = scheduleService.getSchedule(scheduleId);
 		if (petTask == null) {
 			res.setStatus(404);
 		}
-		return petTask;
+		return petTask.get();
 
 	}
 

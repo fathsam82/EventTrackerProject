@@ -1,13 +1,14 @@
 package com.skilldistillery.miloschedule.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.skilldistillery.miloschedule.entities.PetTask;
 
 public interface PetTaskService {
 	List<PetTask> listAllSchedules();
 
-	PetTask getSchedule(int scheduleId);
+	Optional<PetTask> getSchedule(int scheduleId);
 
 	PetTask create(PetTask petTask);
 

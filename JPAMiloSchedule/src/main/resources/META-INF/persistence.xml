@@ -6,6 +6,7 @@
 		
 		
 		<class>com.skilldistillery.miloschedule.entities.PetTask</class>
+		<class>com.skilldistillery.miloschedule.entities.TaskType</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/miloscheduledb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />

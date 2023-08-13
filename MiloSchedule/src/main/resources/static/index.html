@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pet Schedule</title>
+<script src="js/script.js"></script>
+</head>
+<body>
+	
+	<h1>Pet Task Schedule</h1>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Type of Task</th>
+			</tr>
+		</thead>
+		<tbody id="taskTableBody"></tbody>
+	</table>
+	<div id="TaskDeetsDiv"></div>
+	
+	
+	<div id="TaskDetailsDiv" style="display: none;">
+    <h3>Task Details:</h3>
+    <p><strong>ID:</strong> <span id="task-id"></span></p>
+    <p><strong>Name:</strong> <span id="task-name"></span></p>
+    <p><strong>Description:</strong> <span id="task-description"></span></p>
+    <p><strong>Frequency:</strong> <span id="task-frequency"></span></p>
+    <p><strong>Task Type ID:</strong> <span id="task-type-id"></span></p>
+</div>
+
+	
+	<h2>Add New Task</h2>
+	<form name="newTaskForm">
+    <label for="name">Task Name:</label>
+    <input type="text" name="name" id="name" required><br>   	
+  	<label for="description">Description:</label>
+    <input type="text" name="description" id="description" required><br>
+    <label for="frequency">Frequency:</label>
+    <input type="text" name="frequency" id="frequency" required><br>
+    <label for="taskType">Task Type:</label>
+    <input type="number" name="taskType" id="taskType" required><br>
+    <button name="addTaskButton" type="button">Submit</button><br>
+</form>
+	
+	<div id="TaskDetailsDiv"></div>
+	
+	<!--new meal form
+	edit meal form
+	Delete... button in table row? or only on meal details?-->
+
+</body>
+</html>
