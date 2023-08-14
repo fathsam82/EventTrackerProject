@@ -40,6 +40,56 @@ function displayError(msg) {
     dataDiv.textContent = msg;
 }
 
+
+function aggregateData(tasks) {
+    let taskTypeCounts = {};
+    for (let task of tasks) {
+        if (taskTypeCounts[task.taskType.name]) {
+            taskTypeCounts[task.taskType.name]++;
+        } else {
+            taskTypeCounts[task.taskType.name] = 1;
+        }
+    }
+    return taskTypeCounts;
+}
+
+
+let chartInstance;
+
+function visualizeData(aggregatedData) {
+    let labels = Object.keys(aggregatedData);
+    let data = Object.values(aggregatedData);
+
+    let ctx = document.getElementById('myChart').getContext('2d');
+
+    if (chartInstance) {
+       
+        chartInstance.data.labels = labels;
+        chartInstance.data.datasets[0].data = data;
+        chartInstance.update();
+    } else {
+        
+        chartInstance = new Chart(ctx, {
+            type: 'bar', 
+            data: {
+                labels: labels, 
+                datasets: [{
+                    label: 'Number of Tasks',
+                    data: data 
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true 
+                    }
+                }
+            }
+        });
+    }
+}
+
+
 function loadPetScheduleList() {
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "api/pettasks");
@@ -49,6 +99,8 @@ function loadPetScheduleList() {
             if (xhr.status === 200) {
                 let tasks = JSON.parse(xhr.responseText);
                 displayScheduleList(tasks);
+                let aggregatedResults = aggregateData(tasks);   
+                visualizeData(aggregatedResults);
                 console.log(tasks);
             } else {
                 displayError("Invalid data", xhr.responseText);
@@ -58,7 +110,6 @@ function loadPetScheduleList() {
 
     xhr.send();
 }
-
 
 function displayScheduleList(taskList) {
     let tbody = document.getElementById("taskTableBody");
@@ -73,8 +124,7 @@ function displayScheduleList(taskList) {
         
         td = document.createElement("td");
         td.textContent = task.name;
-        tr.appendChild(td);
-
+        tr.appendChild(td);      
         let deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
         deleteBtn.style.display = "none"; 
@@ -104,8 +154,8 @@ function displayScheduleList(taskList) {
         });
 
         tbody.appendChild(tr);
-    }
-}
+    }    
+}    
 
 function addNewTask(newTask) {
     let xhr = new XMLHttpRequest();

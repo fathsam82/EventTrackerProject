@@ -6,11 +6,11 @@ body {
 }
 
 .task-card {
-    border: 1px solid #e0e0e0;
+    border: 1px sandybrown;
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    background-color:aquamarine;
     max-width: 400px;
     margin: 20px auto;
 }
@@ -38,3 +38,21 @@ body {
 .task-card button:hover {
     background-color: #0056b3;
 }
+
+.chartStyle .chartjs-render-monitor {
+    background-color: rgba(75, 192, 192, 0.2); 
+    border-color: rgba(75, 192, 192, 1);
+    border-width: 1px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+table {
+    margin-right: 20px; 
+}
+
+
