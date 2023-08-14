@@ -102,6 +102,9 @@ function loadPetScheduleList() {
                 let aggregatedResults = aggregateData(tasks);   
                 visualizeData(aggregatedResults);
                 console.log(tasks);
+            }
+            else if (xhr.status === 400) {
+                displayError("Failed to get task", xhr.responseText);
             } else {
                 displayError("Invalid data", xhr.responseText);
             }
@@ -188,7 +191,11 @@ function getTaskDetails(taskId) {
             if(xhr.status === 200) {
                 let task = JSON.parse(xhr.responseText);
                 displayTaskDetails(task);
-            } else {
+            }
+            else if (xhr.status === 400){
+				displayError("Failed to get task")
+			}
+             else {
                 displayError("Error fetching task details");
             }
         }
@@ -217,7 +224,11 @@ function updateTask(task) {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 loadPetScheduleList();
-            } else {
+            } 
+            else if (xhr.status === 400){
+				displayError("Failed to update task");
+			}
+            else {
                 displayError("Error updating task");
             }
         }
@@ -236,7 +247,10 @@ function deleteTask(taskId) {
         if (xhr.readyState === 4) {
             if (xhr.status === 200 || xhr.status === 204) {  
 				loadPetScheduleList();
-            } else {
+            }
+            else if (xhr.status === 400){
+				displayError("Failed to delete task")
+			} else {
                 displayError("Failed to delete task. Please try again."); 
             }
         }
