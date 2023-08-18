@@ -77,10 +77,20 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `miloscheduledb`;
-INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (1, 'Breakfast', '1 cup of kibble', 'once a day', 1);
-INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (2, 'Morning treats', '1 Dental Bone', 'once a day', 1);
-INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (3, 'Afternoon treats', '1 Dental Bone', 'once a day', 1);
-INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (4, 'Dinner', '1 cup of kibble', 'once a day', 1);
+INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (1, 'Breakfast', '1 cup of kibble', 'Once a day', 1);
+INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (2, 'Morning treats', '1 Dental Bone', 'Once a day', 1);
+INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (3, 'Afternoon treats', '1 Dental Bone', 'Once a day', 1);
+INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (4, 'Dinner', '1 cup of kibble', 'Once a day', 1);
+INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (5, 'Weekly canned dinner', '1 can of gormet dog food', 'Once a week', 1);
+INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (6, 'Morning walk', '20 minute walk around the neighborhood', 'Once a day', 2);
+INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (7, 'Evening walk', '20 minute walk around the neighborhood', 'Once a day', 2);
+INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (8, 'Afternoon potty break', '10 minute potty break in the backyard', 'Once a day', 2);
+INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (9, 'Play fetch', '10 minutes of fetch in backyard', 'Once a day', 3);
+INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (10, 'Hiking', '2 hour hike in the mountains', 'Once a month', 3);
+INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (11, 'Brushing', '30 minutes of brushing', 'Once a week', 4);
+INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (12, 'Nail clipping', '15 minutes of clipping', 'Every other month', 4);
+INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (13, 'Teeth brushing', '15 minutes of teeth brushing', 'Twice a week', 4);
+INSERT INTO `pet_task` (`id`, `name`, `description`, `frequency`, `task_type_id`) VALUES (14, 'Vet visit', '1 hour vet visit', 'Once every few months', 5);
 
 COMMIT;
 

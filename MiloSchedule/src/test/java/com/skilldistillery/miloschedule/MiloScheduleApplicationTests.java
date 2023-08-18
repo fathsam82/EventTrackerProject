@@ -63,7 +63,7 @@ class MiloScheduleApplicationTests {
 	@Test
 	void test_petTask_frequency() {
 		assertNotNull(petTask);
-		assertEquals("once a day", petTask.getFrequency());
+		assertEquals("Once a day", petTask.getFrequency());
 	}
 
 }
