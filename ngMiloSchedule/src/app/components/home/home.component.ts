@@ -47,6 +47,9 @@ export class HomeComponent implements OnInit{
       }
     })
 }
+
+
+
   updateTask(task: PetTask) {
     this.petScheduleService.update(task).subscribe({
       next: (updatedTask) => {
@@ -73,6 +76,10 @@ deleteTodo(taskId: number) {
       }
     });
   }
+
+  showDetails(task: PetTask) {
+    this.selected = task;
+}
 
 
 

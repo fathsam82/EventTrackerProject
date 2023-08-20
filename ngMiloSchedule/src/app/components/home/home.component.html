@@ -1,3 +1,29 @@
 <h1>Pet Tasks</h1>
 
-<li *ngFor="let task of taskList">{{task.id}} {{task.name}}</li>
+<li *ngFor="let task of taskList" (click)="showDetails(task)"> {{task.id}} {{task.name}}</li>
+
+<div *ngIf="selected">
+  <h2>Task Details</h2>
+  <p><strong>ID:</strong> {{selected.id}}</p>
+  <p><strong>Name:</strong> {{selected.name}}</p>
+  <p><strong>Description:</strong> {{selected.description}}</p>
+  <p><strong>Frequency:</strong> {{selected.frequency}}</p>
+  <p><strong>Task Type:</strong> {{selected.taskType.name}}</p>
+</div>
+
+
+
+<div>
+  <label for="name">Name</label>
+  <input type="text" name="name" [(ngModel)]="newTask.name" /><br>
+  <label for="description">Description</label>
+  <input type="text" name="description" [(ngModel)]="newTask.description" /><br>
+  <label for="frequency">Frequency</label>
+  <input type="text" name="frequency" [(ngModel)]="newTask.frequency" /><br>
+  <label for="taskType">Task Type</label>
+  <input type="number" name="taskType" [(ngModel)]="newTask.taskType.id" /><br>
+  <button (click)="addTask(newTask)">Add Task</button>
+</div>
+
+
+

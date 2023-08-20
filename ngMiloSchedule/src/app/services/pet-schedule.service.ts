@@ -12,6 +12,7 @@ export class PetScheduleService {
 
   private url = environment.baseUrl + "api/pettasks";
 
+
   constructor(private http: HttpClient) { }
 
   index(): Observable<PetTask[]> {
@@ -28,20 +29,25 @@ export class PetScheduleService {
   }
 
   create(petTask: PetTask): Observable<PetTask> {
-    petTask.name = '';
-    petTask.description = '';
-    petTask.frequency = '';
     return this.http.post<PetTask>(this.url, petTask).pipe(
       catchError((err: any) => {
-        console.log(err);
-        return throwError(
-          () => new Error('PetScheduleService.create(): error creating task: ' + err)
-        );
+        console.log('Detailed Error:', err);
+        return throwError(() => new Error('PetScheduleService.create(): error creating task: ' + JSON.stringify(err)));
+    })
 
-      })
+
+      // catchError((err: any) => {
+      //   console.log(err);
+      //   return throwError(
+      //     () => new Error('PetScheduleService.create(): error creating task: ' + err)
+      //   );
+
+      // })
     );
 
   }
+
+
 
   update(updateTask: PetTask): Observable<PetTask>{
     return this.http.put<PetTask>(this.url + "/" + updateTask.id, updateTask).pipe(
