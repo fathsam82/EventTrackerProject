@@ -69,6 +69,7 @@ export class HomeComponent implements OnInit{
 deleteTodo(taskId: number) {
     this.petScheduleService.destroy(taskId).subscribe({
       next: () => {
+        this.selected = null;
         this.reload();
       },
       error: (nogood) => {

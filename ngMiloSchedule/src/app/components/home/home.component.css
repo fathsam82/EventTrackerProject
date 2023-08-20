@@ -1,2 +1,19 @@
-
-
+.home-root {
+  background-color:darkolivegreen;
+}
+.card {
+  background-color:rgb(229, 214, 130);  /* This is another shade of gray. Replace with any color you prefer. */
+}
+.container-fluid {
+  background-color:darkslategray;
+}
+li {
+  background-color:aquamarine;
+}
+.btn btn-primary mt-3 {
+  background-color:forestgreen;
+}
+li:hover {
+  background-color: #E0E0E0;
+  cursor: pointer;
+}

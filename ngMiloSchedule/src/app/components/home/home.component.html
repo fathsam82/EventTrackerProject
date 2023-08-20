@@ -1,57 +1,8 @@
-<!-- <h1>Pet Tasks</h1>
-
-<button class="btn btn-primary">Click Me!</button>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6"></div>
-<li *ngFor="let task of taskList" class="list-group-item"(click)="showDetails(task)"> {{task.id}} {{task.name}}</li>
-</div>
-</div>
-
-<div *ngIf="selected">
-  <h2>Task Details</h2>
-  <p><strong>ID:</strong> {{selected.id}}</p>
-  <p><strong>Name:</strong> {{selected.name}}</p>
-  <p><strong>Description:</strong> {{selected.description}}</p>
-  <p><strong>Frequency:</strong> {{selected.frequency}}</p>
-  <p><strong>Task Type:</strong> {{selected.taskType.id}}</p>
-
-  <form *ngIf="editTask" (submit)="updateTask(editTask)">
-    <label for="name">Name</label>
-    <input type="text" name="name" [(ngModel)]="editTask.name" />
-    <label for="description">Description</label>
-    <input type="text" name="description" [(ngModel)]="editTask.description" />
-    <label for="frequency">Frequency</label>
-    <input type="text" name="frequency" [(ngModel)]="editTask.frequency" />
-    <label for="taskType">Task Type</label>
-    <input type="text" name="taskType" [(ngModel)]="editTask.taskType.id" />
-    <button type="submit">Save Changes</button>
-    </form>
-    </div>
-
-
-
-
-
-<div>
-  <label for="name">Name</label>
-  <input type="text" name="name" [(ngModel)]="newTask.name" /><br>
-  <label for="description">Description</label>
-  <input type="text" name="description" [(ngModel)]="newTask.description" /><br>
-  <label for="frequency">Frequency</label>
-  <input type="text" name="frequency" [(ngModel)]="newTask.frequency" /><br>
-  <label for="taskType">Task Type</label>
-  <input type="number" name="taskType" [(ngModel)]="newTask.taskType.id" /><br>
-  <button (click)="addTask(newTask)">Add Task</button>
-</div> -->
-
+<div class="home-root">
 <h1>Pet Tasks</h1>
-<button class="btn btn-primary">Click Me!</button>
 
 <div class="container-fluid">
     <div class="row">
-        <!-- Task List on the Left -->
         <div class="col-md-6">
             <ul class="list-group">
                 <li *ngFor="let task of taskList"
@@ -62,8 +13,7 @@
             </ul>
         </div>
 
-        <!-- Task Details on the Right -->
-        <div class="col-md-6" *ngIf="selected">
+        <div class="col-md-6" *ngIf="selected" button class="btn btn-danger" (click)="deleteTodo(selected.id)" >Delete Task
             <div class="card">
                 <div class="card-header">
                     Task Details
@@ -76,7 +26,7 @@
                     <p><strong>Frequency:</strong> {{selected.frequency}}</p>
                     <p><strong>Task Type:</strong> {{selected.taskType.id}}</p>
 
-                    <!-- Edit Task Form -->
+
                     <form *ngIf="editTask" (submit)="updateTask(editTask)">
                         <label for="name">Name</label>
                         <input type="text" name="name" [(ngModel)]="editTask.name" />
@@ -93,7 +43,6 @@
         </div>
     </div>
 
-    <!-- Add Task Form -->
     <div class="row mt-4">
         <div class="col-md-12">
             <h2>Add New Task</h2>
@@ -108,5 +57,6 @@
             <button (click)="addTask(newTask)" class="btn btn-success mt-3">Add Task</button>
         </div>
     </div>
+</div>
 </div>
 
