@@ -27,4 +27,43 @@ export class PetScheduleService {
     // return [...this.todos];
   }
 
+  create(petTask: PetTask): Observable<PetTask> {
+    petTask.name = '';
+    petTask.description = '';
+    petTask.frequency = '';
+    return this.http.post<PetTask>(this.url, petTask).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('PetScheduleService.create(): error creating task: ' + err)
+        );
+
+      })
+    );
+
+  }
+
+  update(updateTask: PetTask): Observable<PetTask>{
+    return this.http.put<PetTask>(this.url + "/" + updateTask.id, updateTask).pipe(
+      catchError((err: any)=> {
+        console.log(err);
+        return throwError(
+          () => new Error('PetScheduleService.update(): error updating task: ' + err)
+
+        );
+      })
+    );
+  }
+
+  destroy(taskId: number) {
+    return this.http.delete<PetTask>(this.url + "/" + taskId).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('PetScheduleService.delete(): error deleting task: ' + err)
+
+        );
+      })
+    );
+  }
 }

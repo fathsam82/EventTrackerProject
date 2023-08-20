@@ -10,12 +10,14 @@ import { PetScheduleService } from 'src/app/services/pet-schedule.service';
 export class HomeComponent implements OnInit{
 
   taskList: PetTask [] = [];
+  newTask: PetTask = new PetTask();
+  selected: PetTask | null = null;
+  editTask: PetTask | null = null;
 
-
-
-  constructor(
+   constructor(
     private petScheduleService: PetScheduleService
   ) {}
+
   ngOnInit(): void {
     this.reload()
 
@@ -32,5 +34,50 @@ export class HomeComponent implements OnInit{
       }
     });
   }
+
+  addTask(task: PetTask) {
+    this.petScheduleService.create(task).subscribe ({
+      next: (createdTask) => {
+        this.newTask = new PetTask();
+        this.reload();
+      },
+      error: (fail) => {
+        console.error('PetScheduleComponent.addTask: error creating todo');
+        console.error(fail);
+      }
+    })
+}
+  updateTask(task: PetTask) {
+    this.petScheduleService.update(task).subscribe({
+      next: (updatedTask) => {
+        this.editTask = null;
+        this.reload();
+
+      },
+      error: (oops) => {
+        console.error('PetScheduleComponent.updateTask: error on update');
+        console.error(oops);
+      }
+    })
+  }
+
+
+deleteTodo(taskId: number) {
+    this.petScheduleService.destroy(taskId).subscribe({
+      next: () => {
+        this.reload();
+      },
+      error: (nogood) => {
+      console.error('PetScheduleComponent.deleteTask: error on delete');
+      console.error(nogood);
+      }
+    });
+  }
+
+
+
+
+
+
 
 }
