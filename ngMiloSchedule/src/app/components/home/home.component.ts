@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   newTask: PetTask = new PetTask();
   selected: PetTask | null = null;
   editTask: PetTask | null = null;
+  showDeleteButton: boolean = false;
 
   constructor(private petScheduleService: PetScheduleService) {}
 

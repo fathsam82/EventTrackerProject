@@ -1,4 +1,3 @@
-
 .home-root {
   background-color:darkolivegreen;
 }
@@ -9,7 +8,7 @@
   background-color:darkslategray;
 }
 li {
-  background-color:aquamarine;
+  background-color:darkseagreen;
 }
 .btn btn-primary mt-3 {
   background-color:forestgreen;
@@ -18,3 +17,20 @@ li:hover {
   background-color: #E0E0E0;
   cursor: pointer;
 }
+
+.delete-btn {
+  float: right;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.list-group-item:hover .delete-btn {
+  display: inline;
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+  background-color:darkslategray;
+}
+
